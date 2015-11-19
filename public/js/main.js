@@ -1,7 +1,7 @@
 jQuery(function ($) {
 
     'use strict';
-	
+
 	// ----------------------------------------------
     // Table of index
     // ----------------------------------------------
@@ -18,7 +18,7 @@ jQuery(function ($) {
     # Style Chooser
     # Google Map Customization
     -------------------------------------------------*/
-	
+
 	 // ----------------------------------------------
     // # Demo Chooser
     // ----------------------------------------------
@@ -31,7 +31,7 @@ jQuery(function ($) {
 		})
 
     }());
-	
+
 
 	// ----------------------------------------------
     // Slider images Source
@@ -46,22 +46,22 @@ jQuery(function ($) {
 			]
 		});
 	}());
-		
-	
-	
+
+
+
 	// ----------------------------------------------
     // Parallax Scrolling
     // ----------------------------------------------
-	
+
 	(function () {
-		function parallaxInit() {				
+		function parallaxInit() {
 			$("#help-overview").parallax("50%", 0.3);
 			$("#video-section").parallax("50%", 0.3);
 			$("#who-we-are").parallax("50%", 0.3);
-		}	
+		}
 		parallaxInit();
 	}());
-	
+
 	// ----------------------------------------------
     // Payment-select
     // ----------------------------------------------
@@ -70,23 +70,23 @@ jQuery(function ($) {
 			$(this).addClass('active').parent().siblings().children().removeClass('active');
 		});
 	}());
-	
+
 	// ----------------------------------------------
     // Magnific Popup
     // ----------------------------------------------
-	
+
 	(function () {
 		$('#photo-gallery .image-link').magnificPopup({
 			gallery: {
 			  enabled: true
 			},
-			type: 'image' 
+			type: 'image'
 		});
 		$('.video-link').magnificPopup({type:'iframe'});
 	}());
-	
-	
-	
+
+
+
 	// ----------------------------------------------
     // # Google Map Customization
     // ----------------------------------------------
@@ -98,8 +98,8 @@ jQuery(function ($) {
 
 		map = new GMaps({
 			el: '#gmap',
-			lat: 43.04446,
-			lng: -76.130791,
+			lat: 42.274806,
+			lng: -71.8072616,
 			scrollwheel:false,
 			zoom: 16,
 			zoomControl : true,
@@ -112,20 +112,20 @@ jQuery(function ($) {
 
 		var image = 'images/map-icon.png';
 		map.addMarker({
-			lat: 43.04446,
-			lng: -76.130791,
+			lat: 42.274806,
+			lng: -71.8072616,
 			icon: image,
 			animation: google.maps.Animation.DROP,
 			verticalAlign: 'bottom',
 			horizontalAlign: 'center',
 			backgroundColor: '#d3cfcf',
 			 infoWindow: {
-				content: '<div class="map-info"><address>ThemeRegion<br />234 West 25th Street <br />New York</address></div>',
+				content: '<div class="map-info"><address>The Lodge<br />99 Salisbury Street<br />Worcester, MA 01609</address></div>',
 				borderColor: 'red',
 			}
 		});
-		  
-		var styles = [ 
+
+		var styles = [
 
 			{
 			  "featureType": "road",
@@ -155,18 +155,17 @@ jQuery(function ($) {
 				{ "color": "#7f8080" }
 			  ]
 			}
-	  
+
 		];
 
 		map.addStyle({
 			styledMapName:"Styled Map",
 			styles: styles,
-			mapTypeId: "map_style"  
+			mapTypeId: "map_style"
 		});
 
 		map.setStyle("map_style");
 	}());
-	
-		
-});
 
+
+});
