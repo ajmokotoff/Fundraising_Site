@@ -25,6 +25,41 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/users', users);
 
+var braintree = require("braintree");
+
+var gateway = braintree.connect({
+  environment: braintree.Environment.Sandbox,
+  merchantId: "9nvmxhjqcpqwszms",
+  publicKey: "dxdcjxgf6cnnfm4t",
+  privateKey: "fc9acc07683648b534d790a35f21cb88"
+});
+
+/**
+  (Brain Tree) Sends client token to client
+*/
+app.get("/client_token", function (req, res) {
+  gateway.clientToken.generate({}, function (err, response) {
+    res.send(response.clientToken);
+  });
+});
+
+/**
+  (Brain Tree) Recieves payment nonce from client
+*/
+app.post("/checkout", function (req, res) {
+  var nonce = req.body.payment_method_nonce;
+  // Use payment method nonce here
+});
+
+/**
+  (Brain Tree) creates a transaction
+*/
+gateway.transaction.sale({
+  amount: '10.00',
+  paymentMethodNonce: nonceFromTheClient,
+}, function (err, result) {
+});
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
