@@ -40,7 +40,7 @@
 				</div>
 				<h1>Donate To The <span>125 Year Campaign</span></h1>
 				<p>The Rubin Conference Room<br>A place for brothers to learn with their friends, the sweetest influence.</p>
-				<a href="#" class="btn btn-primary">Donate Now</a>
+				<a href="donate-section" class="btn btn-primary">Donate Now</a>
 				<div class="social-icons">
 					<p>Share With</p>
 					<ul class="list-inline">
@@ -102,7 +102,7 @@
 					</div>
 				</div>
 				<div class="donate-tab text-center">
-					<form id="donate" method="post" action="#">
+					<form id="donate" method="post" action="/checkout">
 						<ul class="tab-list list-inline" role="tablist">
 							<li class="active"><a href="#onetime" role="tab" data-toggle="tab">One time</a></li>
 							<li><a href="#monthly" role="tab" data-toggle="tab">Monthly Recurring </a></li>
@@ -307,12 +307,16 @@
 								</li>
 							</ul>
 						</fieldset>
-						<button type="submit" class="btn btn-primary submit">Donate</button>
+            <div id="payment-form">
+						        <button type="submit" class="btn btn-primary submit" value="Pay $10">Donate</button>
+            </div>
 					</form>
 				</div>
 			</div>
 		</div>
 	</div><!--/#donate section-->
+
+  <script src="https://js.braintreegateway.com/v2/braintree.js"></script>
 
 	<div id="video-section" class="parallax-section">
 		<div class="overlay-bg"></div>
@@ -599,20 +603,6 @@
 		</div>
 	</footer>
 
-	<!--/#Demo Chooser-->
-	<div class="demo-chooser">
-		<div class="demo-chooser-inner">
-			<a href="#" class="toggler"><i class="fa fa-clone"></i></a>
-			<h4>Veriations</h4>
-			<ul class="clearfix">
-				<li  class="active"><a href="#">Slider Background</a></li>
-				<li><a href="http://demo.themeregion.com/castle/helpcastle/index1.html#">Image Background</a></li>
-				<li><a href="http://demo.themeregion.com/castle/helpcastle/index2.html">Video Background</a></li>
-			</ul>
-		</div>
-    </div>
-
-	<!--/#Demo Chooser-->
 
 	<!--/#scripts-->
     <script type="text/javascript" src="js/jquery.js"></script>
@@ -623,5 +613,14 @@
 	<script type="text/javascript" src="js/jquery.magnific-popup.min.js"></script>
     <script type="text/javascript" src="js/vegas.min.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/braintree.js"
+
+    <script>
+      var clientToken = "eyJ2ZXJzaW9uIjoyLCJhdXRob3JpemF0aW9uRmluZ2VycHJpbnQiOiJlMDg0ZGFmZTM0NGVjMzAzOWUyYWEzZmNiOWEwMjg0NTExMTdiMjJlM2EwMjNlNjdkNGVjMmFlMGEwZmRmYzlkfGNyZWF0ZWRfYXQ9MjAxNS0xMi0wM1QwNTowMzoyMS44NjEwNzY5MDUrMDAwMFx1MDAyNm1lcmNoYW50X2lkPTM0OHBrOWNnZjNiZ3l3MmJcdTAwMjZwdWJsaWNfa2V5PTJuMjQ3ZHY4OWJxOXZtcHIiLCJjb25maWdVcmwiOiJodHRwczovL2FwaS5zYW5kYm94LmJyYWludHJlZWdhdGV3YXkuY29tOjQ0My9tZXJjaGFudHMvMzQ4cGs5Y2dmM2JneXcyYi9jbGllbnRfYXBpL3YxL2NvbmZpZ3VyYXRpb24iLCJjaGFsbGVuZ2VzIjpbXSwiZW52aXJvbm1lbnQiOiJzYW5kYm94IiwiY2xpZW50QXBpVXJsIjoiaHR0cHM6Ly9hcGkuc2FuZGJveC5icmFpbnRyZWVnYXRld2F5LmNvbTo0NDMvbWVyY2hhbnRzLzM0OHBrOWNnZjNiZ3l3MmIvY2xpZW50X2FwaSIsImFzc2V0c1VybCI6Imh0dHBzOi8vYXNzZXRzLmJyYWludHJlZWdhdGV3YXkuY29tIiwiYXV0aFVybCI6Imh0dHBzOi8vYXV0aC52ZW5tby5zYW5kYm94LmJyYWludHJlZWdhdGV3YXkuY29tIiwiYW5hbHl0aWNzIjp7InVybCI6Imh0dHBzOi8vY2xpZW50LWFuYWx5dGljcy5zYW5kYm94LmJyYWludHJlZWdhdGV3YXkuY29tIn0sInRocmVlRFNlY3VyZUVuYWJsZWQiOnRydWUsInRocmVlRFNlY3VyZSI6eyJsb29rdXBVcmwiOiJodHRwczovL2FwaS5zYW5kYm94LmJyYWludHJlZWdhdGV3YXkuY29tOjQ0My9tZXJjaGFudHMvMzQ4cGs5Y2dmM2JneXcyYi90aHJlZV9kX3NlY3VyZS9sb29rdXAifSwicGF5cGFsRW5hYmxlZCI6dHJ1ZSwicGF5cGFsIjp7ImRpc3BsYXlOYW1lIjoiQWNtZSBXaWRnZXRzLCBMdGQuIChTYW5kYm94KSIsImNsaWVudElkIjpudWxsLCJwcml2YWN5VXJsIjoiaHR0cDovL2V4YW1wbGUuY29tL3BwIiwidXNlckFncmVlbWVudFVybCI6Imh0dHA6Ly9leGFtcGxlLmNvbS90b3MiLCJiYXNlVXJsIjoiaHR0cHM6Ly9hc3NldHMuYnJhaW50cmVlZ2F0ZXdheS5jb20iLCJhc3NldHNVcmwiOiJodHRwczovL2NoZWNrb3V0LnBheXBhbC5jb20iLCJkaXJlY3RCYXNlVXJsIjpudWxsLCJhbGxvd0h0dHAiOnRydWUsImVudmlyb25tZW50Tm9OZXR3b3JrIjp0cnVlLCJlbnZpcm9ubWVudCI6Im9mZmxpbmUiLCJ1bnZldHRlZE1lcmNoYW50IjpmYWxzZSwiYnJhaW50cmVlQ2xpZW50SWQiOiJtYXN0ZXJjbGllbnQzIiwiYmlsbGluZ0FncmVlbWVudHNFbmFibGVkIjp0cnVlLCJtZXJjaGFudEFjY291bnRJZCI6ImFjbWV3aWRnZXRzbHRkc2FuZGJveCIsImN1cnJlbmN5SXNvQ29kZSI6IlVTRCJ9LCJjb2luYmFzZUVuYWJsZWQiOmZhbHNlLCJtZXJjaGFudElkIjoiMzQ4cGs5Y2dmM2JneXcyYiIsInZlbm1vIjoib2ZmIn0=";
+
+      braintree.setup(clientToken, "dropin", {
+        container: "payment-form"
+      });
+    </script>
 </body>
 </html>
