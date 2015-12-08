@@ -453,7 +453,7 @@ span {
 	margin-bottom:40px;
 }
 
-.tab-content .fancy-label .payment-select{
+.tab-content .fancy-label .payment-select {
 	background-color:#f7f7f7;
 	padding:30px 25px;
 	cursor:pointer;
@@ -477,7 +477,7 @@ span {
 }
 
 .tab-content .fancy-label .payment-select.active {
-	background-color:#ffe600
+	background-image: url(https://i.ytimg.com/vi/GM9JliwMUqY/hqdefault.jpg);
 }
 
 .tab-content .fancy-label input[type="radio"] {
@@ -493,7 +493,7 @@ span {
 }
 
 .fancy-label .payment-select .amount span {
-	color:#000;
+	color:#ffe600;
 	font-weight:500;
 	font-size:30px;
 	margin:10px 0;
