@@ -42,7 +42,7 @@ jQuery(function ($) {
 				{ src: 'images/slider/0.jpg' },
 				{ src: 'images/slider/1.jpg' },
 				{ src: 'images/slider/2.jpg' },
-				{ src: 'images/slider/3.jpg' },
+				//{ src: 'images/slider/3.jpg' },
 			]
 		});
 	}());
