@@ -553,20 +553,10 @@
 		    if(req.readyState == 4) {
 		      if(req.status == 200) {
 		        console.log(req.responseText);
-		        setupBrainTree(req.responseText);
 		      }
 		    }
 		  };
 		  req.send(null);
-
-		  function setupBrainTree(token) {
-		    braintree.setup(token, 'dropin', {
-		      container: 'payment-form',
-		      onReady: function () {
-		        console.log('Braintree is ready');
-		      }
-		    });
-		  }
 
 		  document.getElementById("button").addEventListener("click", function() {
 		    req.open('post', '/checkout', true);
