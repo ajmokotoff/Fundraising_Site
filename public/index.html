@@ -459,9 +459,10 @@
 								</li>
 							</ul>
 						</fieldset>
-            <div id="payment-form">
-						        <button type="submit" class="btn btn-primary submit" value="Pay $10">Donate</button>
-            </div>
+			            
+			            <div id="payment-form">
+			            </div>
+			            <button id="button" class="btn btn-primary submit" value="Pay $10">Donate</button>
 					</form>
 				</div>
 			</div>
@@ -506,7 +507,7 @@
 						<p>All alumni feedback is appreciated and encouraged.</p>
 					</div>
 				</div>
-				<form id="contact-form" name="contact-form" method="post" action="#">
+				<form id="contact-form" name="contact-form" method="post" action="sendMail">
 					<div class="row">
 						<div class="form-group col-sm-4">
 							<input type="text" name="name" class="form-control" required="required" placeholder="Your Name">
@@ -545,5 +546,39 @@
     <script type="text/javascript" src="js/vegas.min.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
     <script type="text/javascript" src="js/braintree.js"></script>
+    <script>
+		  var req = new XMLHttpRequest();
+		  req.open('get', '/client_token', true);
+		  req.onreadystatechange = function() {
+		    if(req.readyState == 4) {
+		      if(req.status == 200) {
+		        console.log(req.responseText);
+		        setupBrainTree(req.responseText);
+		      }
+		    }
+		  };
+		  req.send(null);
+
+		  function setupBrainTree(token) {
+		    braintree.setup(token, 'dropin', {
+		      container: 'payment-form',
+		      onReady: function () {
+		        console.log('Braintree is ready');
+		      }
+		    });
+		  }
+
+		  document.getElementById("button").addEventListener("click", function() {
+		    req.open('post', '/checkout', true);
+		    req.onreadystatechange = function() {
+		      if(req.readyState == 4) {
+		        if(req.status == 200) {
+		          console.log("Checked out!");
+		        }
+		      }
+		    }
+		    req.send(null);
+		  });
+	</script>
 </body>
 </html>
